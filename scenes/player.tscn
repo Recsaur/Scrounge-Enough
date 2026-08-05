@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://cqfmtx5ufqvel"]
+
+[ext_resource type="Texture2D" uid="uid://cpdsuhp7qeug7" path="res://assets/icon.svg" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://dytkwqrm184wf" path="res://scenes/player.gd" id="1_g2els"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3vyb7"]
+height = 37.450703
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
+size = Vector2(180, 90)
+
+[node name="Player" type="CharacterBody2D" unique_id=1403842171]
+script = ExtResource("1_g2els")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=651166283]
+texture = ExtResource("1_3vyb7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1040090471]
+scale = Vector2(4.8782744, 4.8782744)
+shape = SubResource("CapsuleShape2D_3vyb7")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1848118087]
+
+[node name="InteractPivot" type="Node2D" parent="." unique_id=421436534]
+
+[node name="interact" type="Area2D" parent="InteractPivot" unique_id=198415835]
+position = Vector2(0, 111)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractPivot/interact" unique_id=1225356217]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_g2els")

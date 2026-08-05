@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dlpl8jkvfrvem"]
+
+[ext_resource type="Texture2D" uid="uid://nik8cpuo4fsk" path="res://assets/door.png" id="1_pkwu2"]
+[ext_resource type="PackedScene" uid="uid://cqfmtx5ufqvel" path="res://scenes/player.tscn" id="2_jq6rh"]
+
+[node name="Apartment" type="Node2D" unique_id=205059362]
+
+[node name="Door" type="Sprite2D" parent="." unique_id=1920491882]
+position = Vector2(36, 289)
+scale = Vector2(3.8601248, 1.6683187)
+texture = ExtResource("1_pkwu2")
+
+[node name="Player" parent="." unique_id=1403842171 instance=ExtResource("2_jq6rh")]
+position = Vector2(-146, 93)
