@@ -2,6 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://nik8cpuo4fsk" path="res://assets/door.png" id="1_pkwu2"]
 [ext_resource type="PackedScene" uid="uid://cqfmtx5ufqvel" path="res://scenes/player.tscn" id="2_jq6rh"]
+[ext_resource type="PackedScene" uid="uid://y7opken833lk" path="res://scenes/desk.tscn" id="3_jq6rh"]
+[ext_resource type="PackedScene" uid="uid://g7whm0najond" path="res://scenes/door.tscn" id="4_xfxcn"]
 
 [node name="Apartment" type="Node2D" unique_id=205059362]
 
@@ -12,3 +14,9 @@ texture = ExtResource("1_pkwu2")
 
 [node name="Player" parent="." unique_id=1403842171 instance=ExtResource("2_jq6rh")]
 position = Vector2(-146, 93)
+
+[node name="Desk" parent="." unique_id=1127538849 instance=ExtResource("3_jq6rh")]
+position = Vector2(71, -54)
+
+[node name="Door2" parent="." unique_id=1194243336 instance=ExtResource("4_xfxcn")]
+position = Vector2(-146, -39)

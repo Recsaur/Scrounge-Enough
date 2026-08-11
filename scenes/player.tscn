@@ -1,19 +1,19 @@
 [gd_scene format=3 uid="uid://cqfmtx5ufqvel"]
 
-[ext_resource type="Texture2D" uid="uid://cpdsuhp7qeug7" path="res://assets/icon.svg" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://dytkwqrm184wf" path="res://scenes/player.gd" id="1_g2els"]
+[ext_resource type="Texture2D" uid="uid://d064dl5sr6mte" path="res://assets/catplayer.png" id="2_g2els"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3vyb7"]
 height = 37.450703
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
-size = Vector2(180, 90)
+size = Vector2(119, 90)
 
-[node name="Player" type="CharacterBody2D" unique_id=1403842171]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
+size = Vector2(119, 90)
+
+[node name="Player" type="CharacterBody2D" unique_id=1403842171 groups=["player"]]
 script = ExtResource("1_g2els")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=651166283]
-texture = ExtResource("1_3vyb7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1040090471]
 scale = Vector2(4.8782744, 4.8782744)
@@ -27,5 +27,22 @@ shape = SubResource("CapsuleShape2D_3vyb7")
 position = Vector2(0, 111)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractPivot/interact" unique_id=1225356217]
-position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_g2els")
+
+[node name="kick" type="Area2D" parent="InteractPivot" unique_id=604412565]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractPivot/kick" unique_id=1406140380]
+position = Vector2(0.5, 111)
+shape = SubResource("RectangleShape2D_qhqgy")
+disabled = true
+
+[node name="KickCooldown" type="Timer" parent="InteractPivot" unique_id=575307705]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=651166283]
+position = Vector2(9.536743e-07, -1.9073486e-06)
+scale = Vector2(5.8906255, 5.8906255)
+texture = ExtResource("2_g2els")
+
+[connection signal="area_entered" from="InteractPivot/interact" to="." method="_on_interact_area_entered"]
+[connection signal="area_exited" from="InteractPivot/interact" to="." method="_on_interact_area_exited"]
+[connection signal="timeout" from="InteractPivot/KickCooldown" to="." method="_on_kick_cooldown_timeout"]

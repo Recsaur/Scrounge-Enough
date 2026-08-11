@@ -1,10 +1,14 @@
 extends CharacterBody2D
 
 @onready var InteractPivot = $InteractPivot
+@onready var InteractCollision = $InteractPivot/interact/CollisionShape2D
+@onready var KickCollision = $InteractPivot/kick/CollisionShape2D
+@onready var KickCooldown = $InteractPivot/KickCooldown
 
 var SPEED = 1000.0
 const JUMP_VELOCITY = -400.0
 const DASH_SPEED = 2250
+var kick = true
 
 func _physics_process(delta: float) -> void:
 	var direction := Input.get_vector("left", "right", "up", "down")
@@ -13,7 +17,7 @@ func _physics_process(delta: float) -> void:
 		$Sprite2D.flip_h = false
 	else:
 		$Sprite2D.flip_h = true
-	print(direction)
+	#print(direction)
 	match direction:
 		Vector2.LEFT:
 			InteractPivot.rotation_degrees = 90
@@ -23,6 +27,32 @@ func _physics_process(delta: float) -> void:
 			InteractPivot.rotation_degrees = 180
 		Vector2.DOWN:
 			InteractPivot.rotation_degrees = 0
+			
+	if Input.is_action_just_pressed("interact"):
+		InteractCollision.disabled = false
 	
+	if Input.is_action_just_pressed("kick") and kick:
+		KickCollision.disabled = false
+		kick = false
+		KickCooldown.start()
 	velocity = velocity.lerp(direction*SPEED,15*delta)
 	move_and_slide()
+
+
+#func _on_interact_area_entered(area: Area2D) -> void:
+	#print(area)
+	#if area.is_in_group("Interactable"):
+		#if area.has_method("ShowInteract"):
+			#area.ShowInteract(true)
+	#pass # Replace with function body.
+#
+#
+#func _on_interact_area_exited(area: Area2D) -> void:
+	#if area.is_in_group("Interactable"):
+		#if area.has_method("ShowInteract"):
+			#area.ShowInteract(false)
+
+
+func _on_kick_cooldown_timeout() -> void:
+	kick = true
+	pass # Replace with function body.
