@@ -1,22 +1,71 @@
-[gd_scene format=3 uid="uid://dlpl8jkvfrvem"]
+[gd_scene format=4 uid="uid://dlpl8jkvfrvem"]
 
 [ext_resource type="Texture2D" uid="uid://nik8cpuo4fsk" path="res://assets/door.png" id="1_pkwu2"]
 [ext_resource type="PackedScene" uid="uid://cqfmtx5ufqvel" path="res://scenes/player.tscn" id="2_jq6rh"]
 [ext_resource type="PackedScene" uid="uid://y7opken833lk" path="res://scenes/desk.tscn" id="3_jq6rh"]
 [ext_resource type="PackedScene" uid="uid://g7whm0najond" path="res://scenes/door.tscn" id="4_xfxcn"]
+[ext_resource type="Texture2D" uid="uid://3e2m7i1gxgy1" path="res://assets/wallfors.png" id="5_gy1eu"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2wpg1"]
+texture = ExtResource("5_gy1eu")
+0:0/0 = 0
+0:1/0 = 0
+0:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_wsv48"]
+sources/0 = SubResource("TileSetAtlasSource_2wpg1")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gy1eu"]
+texture = ExtResource("5_gy1eu")
+0:0/0 = 0
+0:1/0 = 0
+0:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_2wpg1"]
+sources/0 = SubResource("TileSetAtlasSource_gy1eu")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xfxcn"]
+size = Vector2(914, 87)
 
 [node name="Apartment" type="Node2D" unique_id=205059362]
 
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=481941142]
+position = Vector2(-47, 11)
+scale = Vector2(5, 5)
+tile_map_data = PackedByteArray("AAAAAP3/AAAAAAAAAAAAAP7/AAAAAAEAAAAAAP//AAAAAAIAAAABAP3/AAAAAAAAAAABAP7/AAAAAAEAAAABAP//AAAAAAIAAAACAP3/AAAAAAAAAAACAP7/AAAAAAEAAAACAP//AAAAAAIAAAADAP3/AAAAAAAAAAADAP7/AAAAAAEAAAADAP//AAAAAAIAAAAEAP3/AAAAAAAAAAAEAP7/AAAAAAEAAAAEAP//AAAAAAIAAAAFAP3/AAAAAAAAAAAFAP7/AAAAAAEAAAAFAP//AAAAAAIAAAAGAP3/AAAAAAAAAAAGAP7/AAAAAAEAAAAGAP//AAAAAAIAAAAHAP3/AAAAAAAAAAAHAP7/AAAAAAEAAAAHAP//AAAAAAIAAAD///3/AAAAAAAAAAD9//3/AAAAAAAAAAD9//7/AAAAAAEAAAD9////AAAAAAIAAAD8//3/AAAAAAAAAAD8//7/AAAAAAEAAAD8////AAAAAAIAAAD7//3/AAAAAAAAAAD7//7/AAAAAAEAAAD7////AAAAAAIAAAD6//3/AAAAAAAAAAD6//7/AAAAAAEAAAD6////AAAAAAIAAAD5//3/AAAAAAAAAAD5//7/AAAAAAEAAAD5////AAAAAAIAAAD4//3/AAAAAAAAAAD4//7/AAAAAAEAAAD4////AAAAAAIAAAD3//3/AAAAAAAAAAD3//7/AAAAAAEAAAD3////AAAAAAIAAAD2//3/AAAAAAAAAAD2//7/AAAAAAEAAAD2////AAAAAAIAAAD1//3/AAAAAAAAAAD1//7/AAAAAAEAAAD1////AAAAAAIAAAAIAP3/AAAAAAAAAAAIAP7/AAAAAAEAAAAIAP//AAAAAAIAAAD+//3/AAAAAAAAAAA=")
+tile_set = SubResource("TileSet_wsv48")
+
 [node name="Door" type="Sprite2D" parent="." unique_id=1920491882]
+visible = false
 position = Vector2(36, 289)
 scale = Vector2(3.8601248, 1.6683187)
 texture = ExtResource("1_pkwu2")
 
+[node name="Desk" parent="." unique_id=1127538849 instance=ExtResource("3_jq6rh")]
+position = Vector2(71, -44)
+
+[node name="Door2" parent="." unique_id=1194243336 instance=ExtResource("4_xfxcn")]
+position = Vector2(-128, -48)
+
 [node name="Player" parent="." unique_id=1403842171 instance=ExtResource("2_jq6rh")]
 position = Vector2(-146, 93)
 
-[node name="Desk" parent="." unique_id=1127538849 instance=ExtResource("3_jq6rh")]
-position = Vector2(71, -54)
+[node name="TopWall" type="TileMapLayer" parent="." unique_id=776868357]
+position = Vector2(-47, 11)
+scale = Vector2(5, 5)
+tile_map_data = PackedByteArray("AAD+//3/AAAAAAAAAAD///3/AAAAAAAAAAAAAP3/AAAAAAAAAAD9//3/AAAAAAAAAAD8//3/AAAAAAAAAAD7//3/AAAAAAAAAAABAP3/AAAAAAAAAAACAP3/AAAAAAAAAAADAP3/AAAAAAAAAAAEAP3/AAAAAAAAAAAFAP3/AAAAAAAAAAAGAP3/AAAAAAAAAAAHAP3/AAAAAAAAAAAIAP3/AAAAAAAAAAD6//3/AAAAAAAAAAD5//3/AAAAAAAAAAD4//3/AAAAAAAAAAD3//3/AAAAAAAAAAD2//3/AAAAAAAAAAD1//3/AAAAAAAAAAA=")
+tile_set = SubResource("TileSet_2wpg1")
 
-[node name="Door2" parent="." unique_id=1194243336 instance=ExtResource("4_xfxcn")]
-position = Vector2(-146, -39)
+[node name="WallCollision2" type="StaticBody2D" parent="." unique_id=562315322]
+position = Vector2(-1022, -70)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallCollision2" unique_id=1448701495]
+position = Vector2(387, -33.5)
+shape = SubResource("RectangleShape2D_xfxcn")
+
+[node name="WallCollision" type="StaticBody2D" parent="." unique_id=25105050]
+position = Vector2(-8, -70)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallCollision" unique_id=898584489]
+position = Vector2(387, -33.5)
+shape = SubResource("RectangleShape2D_xfxcn")

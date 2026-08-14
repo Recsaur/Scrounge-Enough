@@ -1,14 +1,18 @@
 [gd_scene format=3 uid="uid://g7whm0najond"]
 
-[ext_resource type="Texture2D" uid="uid://nik8cpuo4fsk" path="res://assets/door.png" id="1_83dcw"]
+[ext_resource type="Texture2D" uid="uid://cle1dejlw5vvv" path="res://assets/animation/door_s1.png" id="1_t58dd"]
 [ext_resource type="Script" uid="uid://dtox6rtr1salg" path="res://scenes/interactable.gd" id="2_83dcw"]
-[ext_resource type="Texture2D" uid="uid://djy21pofajmkk" path="res://assets/animation/door_draft.webp" id="2_la1wf"]
+[ext_resource type="Texture2D" uid="uid://civl1igsoswxl" path="res://assets/animation/door_s2.png" id="2_ju5n0"]
+[ext_resource type="Texture2D" uid="uid://bea588vgf8c5d" path="res://assets/animation/door_s3.png" id="3_kgbum"]
+[ext_resource type="Texture2D" uid="uid://x7tyceacvt71" path="res://assets/animation/door_s4.png" id="4_pg2b6"]
+[ext_resource type="Texture2D" uid="uid://oy8uvpuw8fjp" path="res://assets/animation/door_s5.png" id="5_ey00f"]
+[ext_resource type="Texture2D" uid="uid://bv3on5ahv6fdu" path="res://assets/animation/door_s6.png" id="6_4ayau"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_18pbm"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_83dcw")
+"texture": ExtResource("1_t58dd")
 }],
 "loop": true,
 "name": &"default",
@@ -16,24 +20,39 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_la1wf")
+"texture": ExtResource("1_t58dd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ju5n0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_kgbum")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_pg2b6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ey00f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_4ayau")
 }],
-"loop": true,
+"loop": false,
 "name": &"swing_open",
-"speed": 5.0
+"speed": 20.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_la1wf"]
 size = Vector2(177, 170)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_18pbm"]
-size = Vector2(141, 25)
+size = Vector2(100, 20)
 
 [node name="Door" type="StaticBody2D" unique_id=1194243336]
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=2036131595]
-position = Vector2(23, -13)
-scale = Vector2(0.45333335, 0.45333332)
+position = Vector2(-1.1920929e-07, -14)
+scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_18pbm")
 
 [node name="Label" type="Label" parent="." unique_id=1795493750]
@@ -51,7 +70,7 @@ script = ExtResource("2_83dcw")
 shape = SubResource("RectangleShape2D_la1wf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1493437423]
-position = Vector2(0.5, 0)
+position = Vector2(0, -22)
 shape = SubResource("RectangleShape2D_18pbm")
 
 [connection signal="body_entered" from="Interactable" to="Interactable" method="_on_body_entered"]

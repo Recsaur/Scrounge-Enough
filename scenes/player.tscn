@@ -1,10 +1,22 @@
 [gd_scene format=3 uid="uid://cqfmtx5ufqvel"]
 
 [ext_resource type="Script" uid="uid://dytkwqrm184wf" path="res://scenes/player.gd" id="1_g2els"]
-[ext_resource type="Texture2D" uid="uid://d064dl5sr6mte" path="res://assets/catplayer.png" id="2_g2els"]
+[ext_resource type="Texture2D" uid="uid://du40xvxho2i34" path="res://assets/animation/back1.png" id="2_jej6c"]
+[ext_resource type="Texture2D" uid="uid://cvwoxg8ld8c00" path="res://assets/animation/back2.png" id="3_f1ej7"]
+[ext_resource type="Texture2D" uid="uid://dt1ee57cvl372" path="res://assets/animation/back3.png" id="4_oprun"]
+[ext_resource type="Texture2D" uid="uid://btc05bc3m2kpt" path="res://assets/animation/back4.png" id="5_a8ls1"]
+[ext_resource type="Texture2D" uid="uid://b1glq8mhqe3na" path="res://assets/animation/catplayer1.png" id="6_qfm1y"]
+[ext_resource type="Texture2D" uid="uid://p34b2k0vbonx" path="res://assets/animation/catplayer2.png" id="7_fulsm"]
+[ext_resource type="Texture2D" uid="uid://rawn6bs1jwdo" path="res://assets/animation/catplayer3.png" id="8_4r5pv"]
+[ext_resource type="Texture2D" uid="uid://c10bbohfrbwtt" path="res://assets/animation/catplayer4.png" id="9_60mlk"]
+[ext_resource type="Texture2D" uid="uid://w44b3ssi4u0a" path="res://assets/animation/Side1.png" id="10_i4ail"]
+[ext_resource type="Texture2D" uid="uid://dkddm2hsj1rlc" path="res://assets/animation/Side2.png" id="11_a38lo"]
+[ext_resource type="Texture2D" uid="uid://b8bflifl0824u" path="res://assets/animation/Side3.png" id="12_4ni07"]
+[ext_resource type="Texture2D" uid="uid://dm450di3htrw5" path="res://assets/animation/Side4.png" id="13_l71n6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3vyb7"]
-height = 37.450703
+radius = 6.354706
+height = 20.49905
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
 size = Vector2(119, 90)
@@ -12,10 +24,70 @@ size = Vector2(119, 90)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
 size = Vector2(119, 90)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_ke2ow"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_jej6c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_f1ej7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_oprun")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_a8ls1")
+}],
+"loop": true,
+"name": &"WalkBack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_qfm1y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_fulsm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_4r5pv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_60mlk")
+}],
+"loop": true,
+"name": &"WalkFront",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_i4ail")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_a38lo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_4ni07")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_l71n6")
+}],
+"loop": true,
+"name": &"WalkSide",
+"speed": 10.0
+}]
+
 [node name="Player" type="CharacterBody2D" unique_id=1403842171 groups=["player"]]
 script = ExtResource("1_g2els")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1040090471]
+position = Vector2(0, 33.999996)
 scale = Vector2(4.8782744, 4.8782744)
 shape = SubResource("CapsuleShape2D_3vyb7")
 
@@ -27,21 +99,24 @@ shape = SubResource("CapsuleShape2D_3vyb7")
 position = Vector2(0, 111)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractPivot/interact" unique_id=1225356217]
+position = Vector2(0, -35)
 shape = SubResource("RectangleShape2D_g2els")
 
 [node name="kick" type="Area2D" parent="InteractPivot" unique_id=604412565]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractPivot/kick" unique_id=1406140380]
-position = Vector2(0.5, 111)
+position = Vector2(0.5, 76)
 shape = SubResource("RectangleShape2D_qhqgy")
 disabled = true
 
 [node name="KickCooldown" type="Timer" parent="InteractPivot" unique_id=575307705]
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=651166283]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=884101042]
 position = Vector2(9.536743e-07, -1.9073486e-06)
 scale = Vector2(5.8906255, 5.8906255)
-texture = ExtResource("2_g2els")
+sprite_frames = SubResource("SpriteFrames_ke2ow")
+animation = &"WalkSide"
+frame_progress = 0.6392837
 
 [connection signal="area_entered" from="InteractPivot/interact" to="." method="_on_interact_area_entered"]
 [connection signal="area_exited" from="InteractPivot/interact" to="." method="_on_interact_area_exited"]
