@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cqfmtx5ufqvel"]
 
 [ext_resource type="Script" uid="uid://dytkwqrm184wf" path="res://scenes/player.gd" id="1_g2els"]
+[ext_resource type="Script" uid="uid://b200w46smngac" path="res://scenes/camera_2d.gd" id="2_f1ej7"]
 [ext_resource type="Texture2D" uid="uid://du40xvxho2i34" path="res://assets/animation/back1.png" id="2_jej6c"]
 [ext_resource type="Texture2D" uid="uid://cvwoxg8ld8c00" path="res://assets/animation/back2.png" id="3_f1ej7"]
 [ext_resource type="Texture2D" uid="uid://dt1ee57cvl372" path="res://assets/animation/back3.png" id="4_oprun"]
@@ -13,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://dkddm2hsj1rlc" path="res://assets/animation/Side2.png" id="11_a38lo"]
 [ext_resource type="Texture2D" uid="uid://b8bflifl0824u" path="res://assets/animation/Side3.png" id="12_4ni07"]
 [ext_resource type="Texture2D" uid="uid://dm450di3htrw5" path="res://assets/animation/Side4.png" id="13_l71n6"]
+[ext_resource type="PackedScene" uid="uid://bcxjlb0jttp43" path="res://scenes/player_hud.tscn" id="15_oprun"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3vyb7"]
 radius = 6.354706
@@ -22,7 +24,7 @@ height = 20.49905
 size = Vector2(119, 90)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
-size = Vector2(119, 90)
+size = Vector2(140, 102)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ke2ow"]
 animations = [{
@@ -92,6 +94,8 @@ scale = Vector2(4.8782744, 4.8782744)
 shape = SubResource("CapsuleShape2D_3vyb7")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1848118087]
+zoom = Vector2(0.75, 0.75)
+script = ExtResource("2_f1ej7")
 
 [node name="InteractPivot" type="Node2D" parent="." unique_id=421436534]
 
@@ -102,14 +106,15 @@ position = Vector2(0, 111)
 position = Vector2(0, -35)
 shape = SubResource("RectangleShape2D_g2els")
 
-[node name="kick" type="Area2D" parent="InteractPivot" unique_id=604412565]
+[node name="kick" type="Area2D" parent="InteractPivot" unique_id=604412565 groups=["kick"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractPivot/kick" unique_id=1406140380]
-position = Vector2(0.5, 76)
+position = Vector2(1, 82)
 shape = SubResource("RectangleShape2D_qhqgy")
 disabled = true
 
 [node name="KickCooldown" type="Timer" parent="InteractPivot" unique_id=575307705]
+wait_time = 0.125
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=884101042]
 position = Vector2(9.536743e-07, -1.9073486e-06)
@@ -117,6 +122,16 @@ scale = Vector2(5.8906255, 5.8906255)
 sprite_frames = SubResource("SpriteFrames_ke2ow")
 animation = &"WalkSide"
 frame_progress = 0.6392837
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1010239390]
+layer = 3
+
+[node name="PlayerHUD" parent="CanvasLayer" unique_id=1231800869 instance=ExtResource("15_oprun")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+grow_vertical = 1
 
 [connection signal="area_entered" from="InteractPivot/interact" to="." method="_on_interact_area_entered"]
 [connection signal="area_exited" from="InteractPivot/interact" to="." method="_on_interact_area_exited"]

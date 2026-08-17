@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://bcxjlb0jttp43"]
+
+[ext_resource type="Script" uid="uid://iseyfeumlh0" path="res://scenes/player_hud.gd" id="1_mlvnn"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_otbg0"]
+font_size = 64
+
+[node name="PlayerHUD" type="Control" unique_id=1231800869]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mlvnn")
+
+[node name="Time" type="Label" parent="." unique_id=836217147]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+label_settings = SubResource("LabelSettings_otbg0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RentTimer" type="Timer" parent="." unique_id=1440950528]
+wait_time = 60.0
+autostart = true

@@ -65,4 +65,5 @@ func _physics_process(delta: float) -> void:
 
 func _on_kick_cooldown_timeout() -> void:
 	kick = true
+	KickCollision.disabled = true
 	pass # Replace with function body.
