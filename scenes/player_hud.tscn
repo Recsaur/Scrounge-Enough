@@ -1,9 +1,17 @@
 [gd_scene format=3 uid="uid://bcxjlb0jttp43"]
 
 [ext_resource type="Script" uid="uid://iseyfeumlh0" path="res://scenes/player_hud.gd" id="1_mlvnn"]
+[ext_resource type="FontFile" uid="uid://d1hh84fosvjgg" path="res://assets/Jersey15-Regular.ttf" id="2_iraov"]
+[ext_resource type="Script" uid="uid://hqy8bf2m1hmh" path="res://scenes/player_item_display.gd" id="3_or0tx"]
+[ext_resource type="Texture2D" uid="uid://d0q5rfdleeyu7" path="res://assets/pawnew.png" id="4_or0tx"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_otbg0"]
+font = ExtResource("2_iraov")
 font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_mlvnn"]
+font = ExtResource("2_iraov")
+font_size = 32
 
 [node name="PlayerHUD" type="Control" unique_id=1231800869]
 layout_mode = 3
@@ -23,10 +31,46 @@ offset_left = -20.0
 offset_right = 20.0
 offset_bottom = 23.0
 grow_horizontal = 2
+text = "55.55"
 label_settings = SubResource("LabelSettings_otbg0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Goal" type="Label" parent="." unique_id=787257751]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -78.0
+offset_top = 60.0
+offset_right = 78.0
+offset_bottom = 127.0
+grow_horizontal = 2
+text = "0/1000"
+label_settings = SubResource("LabelSettings_mlvnn")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="RentTimer" type="Timer" parent="." unique_id=1440950528]
 wait_time = 60.0
 autostart = true
+
+[node name="PlayerItemDisplay" type="Control" parent="RentTimer" unique_id=869825110]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_or0tx")
+
+[node name="Sprite2D" type="Sprite2D" parent="RentTimer/PlayerItemDisplay" unique_id=461752728]
+position = Vector2(78, 556)
+scale = Vector2(2.8770034, 2.8770034)
+texture = ExtResource("4_or0tx")
+
+[node name="Sprite2D2" type="Sprite2D" parent="RentTimer/PlayerItemDisplay" unique_id=1421120937]
+position = Vector2(232.99998, 555.99994)
+scale = Vector2(2.877, 2.877)
+texture = ExtResource("4_or0tx")
+
+[node name="Marker2D" type="Marker2D" parent="RentTimer/PlayerItemDisplay" unique_id=450587730]
+position = Vector2(124, 0)

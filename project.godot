@@ -18,6 +18,7 @@ config/icon="res://assets/icon.svg"
 [autoload]
 
 GameController="*uid://bn40ybpr35xp1"
+PlayerItemDisplay="*uid://hqy8bf2m1hmh"
 
 [editor_plugins]
 

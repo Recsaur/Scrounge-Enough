@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://bb5rodxlm5jjn"]
+
+[ext_resource type="Texture2D" uid="uid://bgl5voquur8bk" path="res://assets/painting1.png" id="1_3pf7n"]
+[ext_resource type="Texture2D" uid="uid://cle1dejlw5vvv" path="res://assets/animation/door_s1.png" id="2_moopi"]
+[ext_resource type="Texture2D" uid="uid://civl1igsoswxl" path="res://assets/animation/door_s2.png" id="3_jhvy0"]
+[ext_resource type="Texture2D" uid="uid://bea588vgf8c5d" path="res://assets/animation/door_s3.png" id="4_njiyx"]
+[ext_resource type="Texture2D" uid="uid://x7tyceacvt71" path="res://assets/animation/door_s4.png" id="5_bt0wa"]
+[ext_resource type="Texture2D" uid="uid://oy8uvpuw8fjp" path="res://assets/animation/door_s5.png" id="6_mvdiv"]
+[ext_resource type="Texture2D" uid="uid://bv3on5ahv6fdu" path="res://assets/animation/door_s6.png" id="7_m8dnj"]
+[ext_resource type="Script" uid="uid://bm236o1srpkr8" path="res://scenes/interactable_painting.gd" id="8_3pf7n"]
+[ext_resource type="FontFile" uid="uid://d1hh84fosvjgg" path="res://assets/Jersey15-Regular.ttf" id="8_moopi"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2qji5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_3pf7n")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_moopi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_jhvy0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_njiyx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_bt0wa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_mvdiv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_m8dnj")
+}],
+"loop": false,
+"name": &"swing_open",
+"speed": 20.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jhvy0"]
+font = ExtResource("8_moopi")
+font_size = 24
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qirkb"]
+size = Vector2(177, 170)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rhpaj"]
+size = Vector2(100, 20)
+
+[node name="painting" type="StaticBody2D" unique_id=935982665]
+
+[node name="Sprite2D2" type="AnimatedSprite2D" parent="." unique_id=1452601211]
+position = Vector2(-1.1920929e-07, -14)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_2qji5")
+
+[node name="Label" type="Label" parent="." unique_id=2075324664]
+visible = false
+offset_left = -83.0
+offset_top = -97.0
+offset_right = 82.0
+offset_bottom = -74.0
+text = "E to interact - Door"
+label_settings = SubResource("LabelSettings_jhvy0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Interactable" type="Area2D" parent="." unique_id=634794897 groups=["Interactable"]]
+script = ExtResource("8_3pf7n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=1444170144]
+shape = SubResource("RectangleShape2D_qirkb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=136615556]
+position = Vector2(0, -22)
+shape = SubResource("RectangleShape2D_rhpaj")
+
+[connection signal="area_entered" from="Interactable" to="Interactable" method="_on_area_entered"]
+[connection signal="body_entered" from="Interactable" to="Interactable" method="_on_body_entered"]
+[connection signal="body_exited" from="Interactable" to="Interactable" method="_on_body_exited"]

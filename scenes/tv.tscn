@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://ccs8dbnvvbvd5"]
+
+[ext_resource type="Texture2D" uid="uid://bgl5voquur8bk" path="res://assets/painting1.png" id="1_6m8rr"]
+[ext_resource type="Texture2D" uid="uid://cle1dejlw5vvv" path="res://assets/animation/door_s1.png" id="2_4knv4"]
+[ext_resource type="Texture2D" uid="uid://civl1igsoswxl" path="res://assets/animation/door_s2.png" id="3_daor5"]
+[ext_resource type="Texture2D" uid="uid://bea588vgf8c5d" path="res://assets/animation/door_s3.png" id="4_iqsce"]
+[ext_resource type="Texture2D" uid="uid://x7tyceacvt71" path="res://assets/animation/door_s4.png" id="5_egngg"]
+[ext_resource type="Texture2D" uid="uid://oy8uvpuw8fjp" path="res://assets/animation/door_s5.png" id="6_t3nhs"]
+[ext_resource type="Texture2D" uid="uid://bv3on5ahv6fdu" path="res://assets/animation/door_s6.png" id="7_t00o4"]
+[ext_resource type="FontFile" uid="uid://d1hh84fosvjgg" path="res://assets/Jersey15-Regular.ttf" id="8_wtyyb"]
+[ext_resource type="Script" uid="uid://bfitlwkll2qfi" path="res://scenes/interactable_tv.gd" id="9_6m8rr"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6ksy8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_6m8rr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_4knv4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_daor5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_iqsce")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_egngg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_t3nhs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_t00o4")
+}],
+"loop": false,
+"name": &"swing_open",
+"speed": 20.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_m8sui"]
+font = ExtResource("8_wtyyb")
+font_size = 24
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ddo0"]
+size = Vector2(177, 170)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_28vdh"]
+size = Vector2(43, 253)
+
+[node name="TV" type="StaticBody2D" unique_id=1562711824]
+
+[node name="Sprite2D2" type="AnimatedSprite2D" parent="." unique_id=597922341]
+position = Vector2(-1.1920929e-07, -14)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_6ksy8")
+
+[node name="Label" type="Label" parent="." unique_id=954152577]
+visible = false
+offset_left = -83.0
+offset_top = -97.0
+offset_right = 82.0
+offset_bottom = -74.0
+text = "E to take TV"
+label_settings = SubResource("LabelSettings_m8sui")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Interactable" type="Area2D" parent="." unique_id=1982753524 groups=["Interactable"]]
+script = ExtResource("9_6m8rr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=905119139]
+shape = SubResource("RectangleShape2D_6ddo0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1509304032]
+position = Vector2(-0.5, -40.5)
+shape = SubResource("RectangleShape2D_28vdh")
+
+[connection signal="area_entered" from="Interactable" to="Interactable" method="_on_area_entered"]
+[connection signal="body_entered" from="Interactable" to="Interactable" method="_on_body_entered"]
+[connection signal="body_exited" from="Interactable" to="Interactable" method="_on_body_exited"]

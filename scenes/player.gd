@@ -5,10 +5,11 @@ extends CharacterBody2D
 @onready var KickCollision = $InteractPivot/kick/CollisionShape2D
 @onready var KickCooldown = $InteractPivot/KickCooldown
 
-var SPEED = 1000.0
+var SPEED = GameController.PlayerSpeed
 const JUMP_VELOCITY = -400.0
 const DASH_SPEED = 2250
 var kick = true
+var InInteract = false
 @onready var sprite = $Sprite2D
 
 func _physics_process(delta: float) -> void:
@@ -19,7 +20,7 @@ func _physics_process(delta: float) -> void:
 	#else:
 		#sprite.flip_h = false
 	#print(direction)
-	if direction != Vector2.ZERO:
+	if direction != Vector2.ZERO and not InInteract:
 		match direction:
 			Vector2.LEFT:
 				InteractPivot.rotation_degrees = 90
@@ -37,11 +38,20 @@ func _physics_process(delta: float) -> void:
 				sprite.play("WalkFront")
 	else:
 		sprite.stop()
-			
+	if GameController.PlayerSpeed > 900:
+		sprite.speed_scale = 0.9
+	elif GameController.PlayerSpeed > 800:
+		sprite.speed_scale = 0.8
+	elif GameController.PlayerSpeed > 700:
+		sprite.speed_scale = 0.7
+	elif GameController.PlayerSpeed > 600:
+		sprite.speed_scale = 0.6
+		
+		
 	if Input.is_action_just_pressed("interact"):
 		InteractCollision.disabled = false
 	
-	if Input.is_action_just_pressed("kick") and kick:
+	if Input.is_action_just_pressed("kick") and kick and not InInteract:
 		KickCollision.disabled = false
 		kick = false
 		KickCooldown.start()
@@ -61,7 +71,13 @@ func _physics_process(delta: float) -> void:
 	#if area.is_in_group("Interactable"):
 		#if area.has_method("ShowInteract"):
 			#area.ShowInteract(false)
-
+func Interacting(Use):
+	if Use:
+		InInteract = true
+		SPEED = 0
+	else:
+		InInteract = false
+		SPEED = 1000
 
 func _on_kick_cooldown_timeout() -> void:
 	kick = true

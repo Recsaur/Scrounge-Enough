@@ -85,6 +85,12 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oprun"]
+size = Vector2(282, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a8ls1"]
+size = Vector2(17, 620)
+
 [node name="Player" type="CharacterBody2D" unique_id=1403842171 groups=["player"]]
 script = ExtResource("1_g2els")
 
@@ -120,8 +126,7 @@ wait_time = 0.125
 position = Vector2(9.536743e-07, -1.9073486e-06)
 scale = Vector2(5.8906255, 5.8906255)
 sprite_frames = SubResource("SpriteFrames_ke2ow")
-animation = &"WalkSide"
-frame_progress = 0.6392837
+animation = &"WalkFront"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1010239390]
 layer = 3
@@ -132,6 +137,23 @@ anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.0
 grow_vertical = 1
+
+[node name="StaticBody2D" type="StaticBody2D" parent="CanvasLayer" unique_id=121870447]
+position = Vector2(-41, 0)
+collision_layer = 256
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/StaticBody2D" unique_id=1316679944]
+position = Vector2(190, 618)
+shape = SubResource("RectangleShape2D_oprun")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CanvasLayer/StaticBody2D" unique_id=1157711924]
+position = Vector2(57.5, 318)
+shape = SubResource("RectangleShape2D_a8ls1")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="CanvasLayer/StaticBody2D" unique_id=1786231004]
+position = Vector2(324, 317)
+shape = SubResource("RectangleShape2D_a8ls1")
 
 [connection signal="area_entered" from="InteractPivot/interact" to="." method="_on_interact_area_entered"]
 [connection signal="area_exited" from="InteractPivot/interact" to="." method="_on_interact_area_exited"]

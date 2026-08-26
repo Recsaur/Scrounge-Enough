@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bjcabfxxixd05"]
+
+[ext_resource type="Texture2D" uid="uid://d064dl5sr6mte" path="res://assets/catplayer.png" id="2_h4pec"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r2g4x"]
+
+[node name="PlayerSim" type="Node2D" unique_id=35750110]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1248302111]
+position = Vector2(44, 584)
+scale = Vector2(4.96875, 4.96875)
+texture = ExtResource("2_h4pec")
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1856705947]
+position = Vector2(124, 0)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Marker2D" unique_id=207182190]
+collision_layer = 256
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Marker2D/StaticBody2D" unique_id=1471847530]
+position = Vector2(3, 604)
+shape = SubResource("RectangleShape2D_r2g4x")

@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://djbaxixdwm3ek"]
+
+[ext_resource type="Texture2D" uid="uid://bv82mey7fes8a" path="res://assets/desk.png" id="1_idwgn"]
+[ext_resource type="FontFile" uid="uid://d1hh84fosvjgg" path="res://assets/Jersey15-Regular.ttf" id="2_yxkuy"]
+[ext_resource type="Script" uid="uid://deu7dbllcxq8u" path="res://scenes/interactable_desk.gd" id="3_3yc10"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_efj2v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_idwgn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ltxuy"]
+font = ExtResource("2_yxkuy")
+font_size = 24
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5i6t5"]
+size = Vector2(177, 170)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_chyvh"]
+size = Vector2(108, 66)
+
+[node name="cupboards" type="StaticBody2D" unique_id=234792035]
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=509555770]
+position = Vector2(1, 0)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_efj2v")
+
+[node name="Label" type="Label" parent="." unique_id=480803858]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -99.5
+offset_top = -56.0
+offset_right = 99.5
+offset_bottom = -31.0
+grow_horizontal = 2
+text = "E to interact - Drawer"
+label_settings = SubResource("LabelSettings_ltxuy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Interactable" type="Area2D" parent="." unique_id=1783219571 groups=["Interactable"]]
+script = ExtResource("3_3yc10")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=1056327944]
+shape = SubResource("RectangleShape2D_5i6t5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1791384106]
+position = Vector2(-1, -39)
+shape = SubResource("RectangleShape2D_chyvh")
+
+[connection signal="area_entered" from="Interactable" to="Interactable" method="_on_area_entered"]
+[connection signal="body_entered" from="Interactable" to="Interactable" method="_on_body_entered"]
+[connection signal="body_exited" from="Interactable" to="Interactable" method="_on_body_exited"]

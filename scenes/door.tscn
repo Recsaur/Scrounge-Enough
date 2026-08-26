@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://x7tyceacvt71" path="res://assets/animation/door_s4.png" id="4_pg2b6"]
 [ext_resource type="Texture2D" uid="uid://oy8uvpuw8fjp" path="res://assets/animation/door_s5.png" id="5_ey00f"]
 [ext_resource type="Texture2D" uid="uid://bv3on5ahv6fdu" path="res://assets/animation/door_s6.png" id="6_4ayau"]
+[ext_resource type="Texture2D" uid="uid://bdirr7heyo15k" path="res://assets/door_s11.png" id="6_kgbum"]
+[ext_resource type="FontFile" uid="uid://d1hh84fosvjgg" path="res://assets/Jersey15-Regular.ttf" id="7_ju5n0"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_18pbm"]
 animations = [{
@@ -36,11 +38,21 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("6_4ayau")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_kgbum")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_4ayau")
 }],
 "loop": false,
 "name": &"swing_open",
 "speed": 20.0
 }]
+
+[sub_resource type="LabelSettings" id="LabelSettings_kgbum"]
+font = ExtResource("7_ju5n0")
+font_size = 24
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_la1wf"]
 size = Vector2(177, 170)
@@ -54,6 +66,7 @@ size = Vector2(100, 20)
 position = Vector2(-1.1920929e-07, -14)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_18pbm")
+animation = &"swing_open"
 
 [node name="Label" type="Label" parent="." unique_id=1795493750]
 visible = false
@@ -62,6 +75,9 @@ offset_top = -97.0
 offset_right = 82.0
 offset_bottom = -74.0
 text = "E to interact - Door"
+label_settings = SubResource("LabelSettings_kgbum")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Interactable" type="Area2D" parent="." unique_id=1946479921 groups=["Interactable"]]
 script = ExtResource("2_83dcw")
