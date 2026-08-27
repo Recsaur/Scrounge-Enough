@@ -5,7 +5,6 @@ extends CharacterBody2D
 @onready var KickCollision = $InteractPivot/kick/CollisionShape2D
 @onready var KickCooldown = $InteractPivot/KickCooldown
 
-var SPEED = GameController.PlayerSpeed
 const JUMP_VELOCITY = -400.0
 const DASH_SPEED = 2250
 var kick = true
@@ -13,6 +12,7 @@ var InInteract = false
 @onready var sprite = $Sprite2D
 
 func _physics_process(delta: float) -> void:
+	GameController.PlayerSpeed
 	var direction := Input.get_vector("left", "right", "up", "down")
 	#velocity = direction * SPEED
 	#if get_global_mouse_position().x > position.x:
@@ -55,7 +55,7 @@ func _physics_process(delta: float) -> void:
 		KickCollision.disabled = false
 		kick = false
 		KickCooldown.start()
-	velocity = velocity.lerp(direction*SPEED,15*delta)
+	velocity = velocity.lerp(direction*GameController.PlayerSpeed,15*delta)
 	move_and_slide()
 
 
@@ -74,10 +74,12 @@ func _physics_process(delta: float) -> void:
 func Interacting(Use):
 	if Use:
 		InInteract = true
-		SPEED = 0
+		GameController.Interacting = true
+		GameController.PlayerSpeed = 0
 	else:
 		InInteract = false
-		SPEED = 1000
+		GameController.Interacting = false
+		GameController.PlayerSpeed = 1000
 
 func _on_kick_cooldown_timeout() -> void:
 	kick = true

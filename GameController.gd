@@ -4,6 +4,7 @@ signal Action(value : float)
 
 #PLAYER RELATED STUFF
 var PlayerSpeed = 1000.0
+var Interacting = false
 
 #UI RELATED STUFF
 var Money = 0
@@ -21,17 +22,18 @@ var VaseTime = 1
 var TVTime = 3
 
 func _process(delta: float) -> void:
-	if Carrying > 1:
-		PawShakes = 1
-		PlayerSpeed = 900
-	elif Carrying > 3:
-		PawShakes = 2
-		PlayerSpeed = 800
-	elif Carrying > 5:
-		PawShakes = 3
-		print("HGGGGGGGG")
-		PlayerSpeed = 700
-	elif Carrying > 7:
-		PawShakes = 4
-		PlayerSpeed = 600
+	if not Interacting:
+		if Carrying > 7:
+			PawShakes = 4
+			PlayerSpeed = 600
+		elif Carrying > 5:
+			PawShakes = 3
+			PlayerSpeed = 700
+		elif Carrying > 3:
+			PawShakes = 2
+			print("HGGGGGGGG")
+			PlayerSpeed = 800
+		elif Carrying > 1:
+			PawShakes = 1
+			PlayerSpeed = 900
 		

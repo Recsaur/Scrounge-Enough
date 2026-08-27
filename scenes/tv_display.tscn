@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://khognnn6mumx"]
 
-[ext_resource type="Texture2D" uid="uid://bgl5voquur8bk" path="res://assets/painting1.png" id="1_tlj1c"]
+[ext_resource type="Texture2D" uid="uid://b5lqtm2c6alax" path="res://assets/tvreal.png" id="1_tlj1c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g6f1a"]
-size = Vector2(187, 96)
+size = Vector2(237.25, 124)
 
 [node name="TV_display" type="RigidBody2D" unique_id=1374211086]
 collision_layer = 256
@@ -11,10 +11,9 @@ collision_mask = 256
 mass = 5.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=606855122]
-position = Vector2(0, -10)
+position = Vector2(2.375, -4)
 shape = SubResource("RectangleShape2D_g6f1a")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=946261614]
-position = Vector2(-2.861023e-06, 29.500008)
-scale = Vector2(11.750001, 5.46875)
+scale = Vector2(4.171875, 4.171875)
 texture = ExtResource("1_tlj1c")

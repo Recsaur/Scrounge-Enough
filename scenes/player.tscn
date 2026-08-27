@@ -91,6 +91,9 @@ size = Vector2(282, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a8ls1"]
 size = Vector2(17, 620)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_oprun"]
+radius = 5.0
+
 [node name="Player" type="CharacterBody2D" unique_id=1403842171 groups=["player"]]
 script = ExtResource("1_g2els")
 
@@ -154,6 +157,10 @@ shape = SubResource("RectangleShape2D_a8ls1")
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="CanvasLayer/StaticBody2D" unique_id=1786231004]
 position = Vector2(324, 317)
 shape = SubResource("RectangleShape2D_a8ls1")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="CanvasLayer/StaticBody2D" unique_id=2057543955]
+position = Vector2(190, 605)
+shape = SubResource("CircleShape2D_oprun")
 
 [connection signal="area_entered" from="InteractPivot/interact" to="." method="_on_interact_area_entered"]
 [connection signal="area_exited" from="InteractPivot/interact" to="." method="_on_interact_area_exited"]

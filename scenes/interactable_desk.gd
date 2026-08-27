@@ -10,6 +10,7 @@ func _physics_process(delta: float) -> void:
 		sprite.play("default")
 		act_label.hide()
 		alrdy_use = true
+		sprite.play("open")
 		get_parent().get_parent().get_node("Player").Interacting(true)
 		await get_tree().create_timer(GameController.DrawerTime).timeout
 		get_parent().get_parent().get_node("Player").Interacting(false)

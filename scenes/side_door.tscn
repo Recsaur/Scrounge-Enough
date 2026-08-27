@@ -1,0 +1,122 @@
+[gd_scene format=3 uid="uid://bux1ec0fqi84p"]
+
+[ext_resource type="Texture2D" uid="uid://cle1dejlw5vvv" path="res://assets/animation/door_s1.png" id="1_v0mju"]
+[ext_resource type="Texture2D" uid="uid://cukgqq4rllapi" path="res://assets/doorside1.png" id="2_3w10b"]
+[ext_resource type="Texture2D" uid="uid://bknmi4mnsmpee" path="res://assets/doorside2.png" id="3_0apmk"]
+[ext_resource type="Texture2D" uid="uid://i0wbf50b6fbj" path="res://assets/doorside3.png" id="4_62u5j"]
+[ext_resource type="Texture2D" uid="uid://co8rm7mo75ysw" path="res://assets/doorside4.png" id="5_khl6v"]
+[ext_resource type="Texture2D" uid="uid://c1umemefn1788" path="res://assets/doorside5.png" id="6_3qxef"]
+[ext_resource type="Texture2D" uid="uid://baormrkygns3g" path="res://assets/doorside6.png" id="7_xlnvm"]
+[ext_resource type="Texture2D" uid="uid://cpwox5ssj5q3a" path="res://assets/doorside7.png" id="8_juxmb"]
+[ext_resource type="Texture2D" uid="uid://cs77wvwovsgwj" path="res://assets/doorside8.png" id="9_tc0o3"]
+[ext_resource type="Texture2D" uid="uid://ddwx3p20ucykg" path="res://assets/doorside9.png" id="10_edhxt"]
+[ext_resource type="Texture2D" uid="uid://cxr0tpcpd16mx" path="res://assets/doorside10.png" id="11_drcr1"]
+[ext_resource type="Texture2D" uid="uid://c7stiuh3absmi" path="res://assets/doorside11.png" id="12_vh5p5"]
+[ext_resource type="Texture2D" uid="uid://ccrmmgc0ywgmk" path="res://assets/doorside12.png" id="13_7uo25"]
+[ext_resource type="FontFile" uid="uid://d1hh84fosvjgg" path="res://assets/Jersey15-Regular.ttf" id="14_dtgcm"]
+[ext_resource type="Script" uid="uid://bhlp62rj7gd03" path="res://scenes/interactablesidedoor.gd" id="15_v0mju"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lebgj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_v0mju")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_3w10b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_0apmk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_62u5j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_khl6v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_3qxef")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_xlnvm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_juxmb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_tc0o3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_edhxt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_drcr1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_vh5p5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_7uo25")
+}],
+"loop": false,
+"name": &"swing_open",
+"speed": 20.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vdn1q"]
+font = ExtResource("14_dtgcm")
+font_size = 24
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hhvv3"]
+size = Vector2(177, 170)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m3cxl"]
+size = Vector2(139, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3w10b"]
+size = Vector2(15, 150)
+
+[node name="SideDoor" type="StaticBody2D" unique_id=658762674]
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=571340189]
+position = Vector2(-100.999985, 7)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_lebgj")
+animation = &"swing_open"
+
+[node name="Label" type="Label" parent="." unique_id=1904349779]
+visible = false
+offset_left = -83.0
+offset_top = -97.0
+offset_right = 82.0
+offset_bottom = -74.0
+text = "E to interact - Door"
+label_settings = SubResource("LabelSettings_vdn1q")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Interactable" type="Area2D" parent="." unique_id=1311234662 groups=["Interactable"]]
+script = ExtResource("15_v0mju")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=468529192]
+shape = SubResource("RectangleShape2D_hhvv3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=563405957]
+position = Vector2(-1.0000001, -0.5)
+rotation = -1.5707964
+shape = SubResource("RectangleShape2D_m3cxl")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=852695869]
+position = Vector2(-66, 61.500004)
+rotation = -1.5707964
+shape = SubResource("RectangleShape2D_3w10b")
+disabled = true
+
+[connection signal="area_entered" from="Interactable" to="Interactable" method="_on_area_entered"]
+[connection signal="body_entered" from="Interactable" to="Interactable" method="_on_body_entered"]
+[connection signal="body_exited" from="Interactable" to="Interactable" method="_on_body_exited"]
