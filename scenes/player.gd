@@ -38,14 +38,14 @@ func _physics_process(delta: float) -> void:
 				sprite.play("WalkFront")
 	else:
 		sprite.stop()
-	if GameController.PlayerSpeed > 900:
-		sprite.speed_scale = 0.9
-	elif GameController.PlayerSpeed > 800:
-		sprite.speed_scale = 0.8
+	if GameController.PlayerSpeed > 600:
+		sprite.speed_scale = 0.6
 	elif GameController.PlayerSpeed > 700:
 		sprite.speed_scale = 0.7
-	elif GameController.PlayerSpeed > 600:
-		sprite.speed_scale = 0.6
+	elif GameController.PlayerSpeed > 800:
+		sprite.speed_scale = 0.8
+	elif GameController.PlayerSpeed > 900:
+		sprite.speed_scale = 0.9
 		
 		
 	if Input.is_action_just_pressed("interact"):

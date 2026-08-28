@@ -1,0 +1,114 @@
+[gd_scene format=3 uid="uid://drie5kkliw0k3"]
+
+[ext_resource type="Texture2D" uid="uid://b5bd45nhk525t" path="res://assets/randd.png" id="1_dc3dr"]
+[ext_resource type="Texture2D" uid="uid://ssecyv8p4xn5" path="res://assets/WashingMachine.png" id="2_b88u7"]
+[ext_resource type="Texture2D" uid="uid://bvdgud85m5qwx" path="res://assets/animation/desk1.png" id="3_wosm8"]
+[ext_resource type="Texture2D" uid="uid://dtcggr8n8n1i0" path="res://assets/animation/desk2.png" id="4_jca7a"]
+[ext_resource type="Texture2D" uid="uid://fbsdhuajkmjv" path="res://assets/animation/desk3.png" id="5_ejus4"]
+[ext_resource type="Texture2D" uid="uid://3dey1ywldbeu" path="res://assets/animation/desk4.png" id="6_7y4p0"]
+[ext_resource type="Texture2D" uid="uid://dp0mqsaa3vh66" path="res://assets/animation/desk5.png" id="7_4b4d2"]
+[ext_resource type="Texture2D" uid="uid://da26etsawdacv" path="res://assets/animation/desk6.png" id="8_j3kbb"]
+[ext_resource type="FontFile" uid="uid://d1hh84fosvjgg" path="res://assets/Jersey15-Regular.ttf" id="9_qd654"]
+[ext_resource type="Script" uid="uid://bqd5qsltx06eu" path="res://scenes/interactable_washing.gd" id="10_dc3dr"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7kobo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_b88u7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_wosm8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_jca7a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ejus4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ejus4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ejus4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ejus4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ejus4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ejus4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_7y4p0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_4b4d2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_j3kbb")
+}],
+"loop": false,
+"name": &"open",
+"speed": 10.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2g5ks"]
+font = ExtResource("9_qd654")
+font_size = 24
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t50dw"]
+size = Vector2(221, 203)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qhc5d"]
+size = Vector2(154, 161)
+
+[node name="WashingMachine" type="StaticBody2D" unique_id=1183622046]
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=439091296]
+modulate = Color(0.57, 0.57, 0.57, 0.3254902)
+position = Vector2(0.9999995, 52)
+scale = Vector2(26, 18.8)
+texture = ExtResource("1_dc3dr")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=2068166015]
+position = Vector2(1, 0)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_7kobo")
+
+[node name="Label" type="Label" parent="." unique_id=1042468559]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -99.5
+offset_top = -56.0
+offset_right = 99.5
+offset_bottom = -31.0
+grow_horizontal = 2
+text = "E to interact - Drawer"
+label_settings = SubResource("LabelSettings_2g5ks")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Interactable" type="Area2D" parent="." unique_id=1397264951 groups=["Interactable"]]
+script = ExtResource("10_dc3dr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=274172217]
+position = Vector2(3.5, 5.5)
+shape = SubResource("RectangleShape2D_t50dw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1331462405]
+position = Vector2(3, 8.5)
+shape = SubResource("RectangleShape2D_qhc5d")
+
+[connection signal="area_entered" from="Interactable" to="Interactable" method="_on_area_entered"]
+[connection signal="body_entered" from="Interactable" to="Interactable" method="_on_body_entered"]
+[connection signal="body_exited" from="Interactable" to="Interactable" method="_on_body_exited"]
