@@ -63,12 +63,12 @@ offset_bottom = 40.0
 script = ExtResource("3_or0tx")
 
 [node name="Sprite2D" type="Sprite2D" parent="RentTimer/PlayerItemDisplay" unique_id=461752728]
-position = Vector2(90.06411, 610.8181)
+position = Vector2(117.06411, 610.8181)
 scale = Vector2(2.8770034, 2.8770034)
 texture = ExtResource("4_or0tx")
 
 [node name="Sprite2D2" type="Sprite2D" parent="RentTimer/PlayerItemDisplay" unique_id=1421120937]
-position = Vector2(239.0641, 610.81805)
+position = Vector2(266.06412, 610.81805)
 scale = Vector2(2.877, 2.877)
 texture = ExtResource("4_or0tx")
 flip_h = true

@@ -86,7 +86,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oprun"]
-size = Vector2(282, 20)
+size = Vector2(338, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a8ls1"]
 size = Vector2(17, 620)
@@ -147,7 +147,7 @@ collision_layer = 256
 collision_mask = 256
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/StaticBody2D" unique_id=1316679944]
-position = Vector2(190, 618)
+position = Vector2(218, 618)
 shape = SubResource("RectangleShape2D_oprun")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="CanvasLayer/StaticBody2D" unique_id=1157711924]
@@ -155,7 +155,7 @@ position = Vector2(57.5, 318)
 shape = SubResource("RectangleShape2D_a8ls1")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="CanvasLayer/StaticBody2D" unique_id=1786231004]
-position = Vector2(324, 317)
+position = Vector2(386, 317)
 shape = SubResource("RectangleShape2D_a8ls1")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="CanvasLayer/StaticBody2D" unique_id=2057543955]
