@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://bxegrpcfs84wi"]
 
-[ext_resource type="Texture2D" uid="uid://ssecyv8p4xn5" path="res://assets/WashingMachine.png" id="1_vhweo"]
+[ext_resource type="Texture2D" uid="uid://rx5o086wcnpt" path="res://assets/washingdisplay.png" id="1_vhweo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rc32u"]
-size = Vector2(116, 133)
+size = Vector2(123, 141)
 
 [node name="washing_display" type="RigidBody2D" unique_id=1122345749]
 collision_layer = 256
@@ -11,9 +11,9 @@ collision_mask = 256
 mass = 5.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1765182759]
-position = Vector2(-4, 8.5)
+position = Vector2(-0.5, -3.5)
 shape = SubResource("RectangleShape2D_rc32u")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=294346061]
-scale = Vector2(4.171875, 4.171875)
+scale = Vector2(3.0651042, 3.0651042)
 texture = ExtResource("1_vhweo")

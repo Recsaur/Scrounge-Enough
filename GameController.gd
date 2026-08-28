@@ -6,6 +6,9 @@ signal Action(value : float)
 var PlayerSpeed = 1000.0
 var Interacting = false
 
+var left = false
+var right = false
+
 #UI RELATED STUFF
 var Money = 0
 var PawShakes = 0

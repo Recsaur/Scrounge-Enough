@@ -23,17 +23,25 @@ func _physics_process(delta: float) -> void:
 	if direction != Vector2.ZERO and not InInteract:
 		match direction:
 			Vector2.LEFT:
+				GameController.left = true
+				GameController.right = false
 				InteractPivot.rotation_degrees = 90
 				sprite.flip_h = false
 				sprite.play("WalkSide")
 			Vector2.RIGHT:
+				GameController.right = true
+				GameController.left = false
 				InteractPivot.rotation_degrees = 270
 				sprite.flip_h = true
 				sprite.play("WalkSide")
 			Vector2.UP:
+				GameController.left = false
+				GameController.right = false
 				InteractPivot.rotation_degrees = 180
 				sprite.play("WalkBack")
 			Vector2.DOWN:
+				GameController.left = false
+				GameController.right = false
 				InteractPivot.rotation_degrees = 0
 				sprite.play("WalkFront")
 	else:

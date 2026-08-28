@@ -218,8 +218,8 @@ script = ExtResource("6_r5s3g")
 
 [node name="Shadow" type="Sprite2D" parent="Shadow" unique_id=31166479]
 modulate = Color(1, 1, 1, 0.34117648)
-position = Vector2(4.7683716e-07, 15.6)
-scale = Vector2(4.1599994, 1.4399998)
+position = Vector2(-4.7683716e-07, 15.599999)
+scale = Vector2(3.12, 1.4399998)
 texture = ExtResource("5_1hq1a")
 
 [node name="NromalWalls" type="TileMapLayer" parent="." unique_id=481941142]
