@@ -65,7 +65,7 @@ font = ExtResource("9_qd654")
 font_size = 24
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t50dw"]
-size = Vector2(221, 203)
+size = Vector2(65, 203)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhc5d"]
 size = Vector2(154, 161)
@@ -102,7 +102,7 @@ vertical_alignment = 1
 script = ExtResource("10_dc3dr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=274172217]
-position = Vector2(3.5, 5.5)
+position = Vector2(-74.5, 5.5)
 shape = SubResource("RectangleShape2D_t50dw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1331462405]

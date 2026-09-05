@@ -91,8 +91,12 @@ size = Vector2(338, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a8ls1"]
 size = Vector2(17, 620)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_oprun"]
-radius = 5.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oprun"]
+radius = 18.0
+height = 94.000015
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qfm1y"]
+size = Vector2(360, 20)
 
 [node name="Player" type="CharacterBody2D" unique_id=1403842171 groups=["player"]]
 script = ExtResource("1_g2els")
@@ -151,16 +155,26 @@ position = Vector2(218, 618)
 shape = SubResource("RectangleShape2D_oprun")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="CanvasLayer/StaticBody2D" unique_id=1157711924]
-position = Vector2(57.5, 318)
+position = Vector2(39, 318)
 shape = SubResource("RectangleShape2D_a8ls1")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="CanvasLayer/StaticBody2D" unique_id=1786231004]
-position = Vector2(386, 317)
+position = Vector2(394, 317)
 shape = SubResource("RectangleShape2D_a8ls1")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="CanvasLayer/StaticBody2D" unique_id=2057543955]
-position = Vector2(190, 605)
-shape = SubResource("CircleShape2D_oprun")
+position = Vector2(190, 619)
+rotation = 1.5042578
+shape = SubResource("CapsuleShape2D_oprun")
+
+[node name="Area2D" type="Area2D" parent="CanvasLayer/StaticBody2D" unique_id=166539415]
+position = Vector2(1, -12)
+collision_layer = 256
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/StaticBody2D/Area2D" unique_id=843771996]
+position = Vector2(217, 614)
+shape = SubResource("RectangleShape2D_qfm1y")
 
 [connection signal="area_entered" from="InteractPivot/interact" to="." method="_on_interact_area_entered"]
 [connection signal="area_exited" from="InteractPivot/interact" to="." method="_on_interact_area_exited"]

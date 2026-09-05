@@ -8,6 +8,7 @@ var alrdy_use = false
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("interact") and player_near and not alrdy_use:
 		alrdy_use = true
+		AudioHandler.OpenDoor()
 		sprite.play("swing_open")
 		await get_tree().create_timer(0.125).timeout
 		col_hitbox.disabled = true
@@ -39,6 +40,7 @@ func _on_area_entered(area: Area2D) -> void:
 		GameController.emit_signal("Action",15)
 		alrdy_use = true
 		sprite.speed_scale = 2
+		AudioHandler.Slam()
 		sprite.play("swing_open")
 		await get_tree().create_timer(0.05).timeout
 		col_hitbox.set_deferred("disabled", true)

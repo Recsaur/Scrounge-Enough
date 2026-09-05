@@ -26,6 +26,7 @@ func ItemSpawn(Item):
 			PD.position = Vector2(124,0)
 			get_tree().current_scene.get_node("Player").get_node("CanvasLayer").add_child(PD)
 			GameController.Carrying += PD.mass
+			AudioHandler.Coin()
 		"TV":
 			print("Hi")
 			var PD = TVDisp.instantiate()

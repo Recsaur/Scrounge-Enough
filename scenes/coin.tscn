@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dtkjic7lartr0"]
 
-[ext_resource type="Texture2D" uid="uid://b8nrvi4t42ppe" path="res://assets/coin.png" id="1_rwqht"]
+[ext_resource type="Texture2D" uid="uid://b2r4hhlgj0oa0" path="res://assets/caaoin.png" id="1_rwqht"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i64fm"]
 radius = 11.0
@@ -11,8 +11,10 @@ collision_mask = 256
 mass = 0.125
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=330270499]
+scale = Vector2(1.2208589, 1.2208589)
 shape = SubResource("CircleShape2D_i64fm")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=954343209]
-scale = Vector2(0.09223443, 0.09223443)
+position = Vector2(-1.1920929e-07, 0)
+scale = Vector2(0.85, 0.85)
 texture = ExtResource("1_rwqht")

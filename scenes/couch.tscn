@@ -1,0 +1,120 @@
+[gd_scene format=3 uid="uid://bfeel5ys1t0pq"]
+
+[ext_resource type="Texture2D" uid="uid://b5bd45nhk525t" path="res://assets/randd.png" id="1_8lkwp"]
+[ext_resource type="Texture2D" uid="uid://prtwh42v1hhj" path="res://assets/Lcouch.png" id="2_ps0jo"]
+[ext_resource type="Texture2D" uid="uid://bvdgud85m5qwx" path="res://assets/animation/desk1.png" id="3_snuav"]
+[ext_resource type="Texture2D" uid="uid://dtcggr8n8n1i0" path="res://assets/animation/desk2.png" id="4_pfgeg"]
+[ext_resource type="Texture2D" uid="uid://fbsdhuajkmjv" path="res://assets/animation/desk3.png" id="5_4i3bw"]
+[ext_resource type="Texture2D" uid="uid://3dey1ywldbeu" path="res://assets/animation/desk4.png" id="6_p4tqg"]
+[ext_resource type="Texture2D" uid="uid://dp0mqsaa3vh66" path="res://assets/animation/desk5.png" id="7_pd6uq"]
+[ext_resource type="Texture2D" uid="uid://da26etsawdacv" path="res://assets/animation/desk6.png" id="8_4tlml"]
+[ext_resource type="FontFile" uid="uid://d1hh84fosvjgg" path="res://assets/Jersey15-Regular.ttf" id="9_yumic"]
+[ext_resource type="Script" uid="uid://deu7dbllcxq8u" path="res://scenes/interactable_desk.gd" id="10_j5gk1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j8sfq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ps0jo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_snuav")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_pfgeg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_4i3bw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_4i3bw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_4i3bw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_4i3bw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_4i3bw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_4i3bw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_p4tqg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_pd6uq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_4tlml")
+}],
+"loop": false,
+"name": &"open",
+"speed": 10.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wjayi"]
+font = ExtResource("9_yumic")
+font_size = 24
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tj781"]
+size = Vector2(177, 170)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p1app"]
+size = Vector2(149, 507)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8lkwp"]
+size = Vector2(416, 179)
+
+[node name="Couch" type="StaticBody2D" unique_id=1236913126]
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1681118588]
+modulate = Color(0.57, 0.57, 0.57, 0.3254902)
+position = Vector2(-5.364418e-06, 64)
+scale = Vector2(25.6, 5.7999997)
+texture = ExtResource("1_8lkwp")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=614472126]
+position = Vector2(1, 0)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_j8sfq")
+
+[node name="Label" type="Label" parent="." unique_id=1029222950]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -99.5
+offset_top = -56.0
+offset_right = 99.5
+offset_bottom = -31.0
+grow_horizontal = 2
+text = "E to interact - Drawer"
+label_settings = SubResource("LabelSettings_wjayi")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Interactable" type="Area2D" parent="." unique_id=354362672 groups=["Interactable"]]
+script = ExtResource("10_j5gk1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=646840882]
+shape = SubResource("RectangleShape2D_tj781")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=822685534]
+position = Vector2(-22.5, 4.5)
+shape = SubResource("RectangleShape2D_p1app")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=260965009]
+position = Vector2(-156, -157.5)
+shape = SubResource("RectangleShape2D_8lkwp")
+
+[connection signal="area_entered" from="Interactable" to="Interactable" method="_on_area_entered"]
+[connection signal="body_entered" from="Interactable" to="Interactable" method="_on_body_entered"]
+[connection signal="body_exited" from="Interactable" to="Interactable" method="_on_body_exited"]

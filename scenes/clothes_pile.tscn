@@ -1,0 +1,125 @@
+[gd_scene format=3 uid="uid://20bsqg6esfbv"]
+
+[ext_resource type="Texture2D" uid="uid://bw73r68ipn3kv" path="res://assets/shadowcircle.png" id="1_1khs2"]
+[ext_resource type="Texture2D" uid="uid://b5bd45nhk525t" path="res://assets/randd.png" id="1_14xno"]
+[ext_resource type="Texture2D" uid="uid://d0q8x13oo6eao" path="res://assets/clothespile.png" id="2_14xno"]
+[ext_resource type="Texture2D" uid="uid://bvdgud85m5qwx" path="res://assets/animation/desk1.png" id="3_scbmn"]
+[ext_resource type="Texture2D" uid="uid://dtcggr8n8n1i0" path="res://assets/animation/desk2.png" id="4_8h58w"]
+[ext_resource type="Texture2D" uid="uid://fbsdhuajkmjv" path="res://assets/animation/desk3.png" id="5_a1sde"]
+[ext_resource type="Texture2D" uid="uid://3dey1ywldbeu" path="res://assets/animation/desk4.png" id="6_t7kod"]
+[ext_resource type="Texture2D" uid="uid://dp0mqsaa3vh66" path="res://assets/animation/desk5.png" id="7_41bvu"]
+[ext_resource type="Texture2D" uid="uid://da26etsawdacv" path="res://assets/animation/desk6.png" id="8_fio7l"]
+[ext_resource type="FontFile" uid="uid://d1hh84fosvjgg" path="res://assets/Jersey15-Regular.ttf" id="9_mkw1k"]
+[ext_resource type="Script" uid="uid://c1i2i7wiguodf" path="res://clothesinteractable.gd" id="10_p523m"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7n3b6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_14xno")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_scbmn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_8h58w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_a1sde")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_a1sde")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_a1sde")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_a1sde")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_a1sde")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_a1sde")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_t7kod")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_41bvu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_fio7l")
+}],
+"loop": false,
+"name": &"open",
+"speed": 10.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_d3vgd"]
+font = ExtResource("9_mkw1k")
+font_size = 24
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b7gqa"]
+size = Vector2(225, 203)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kvkti"]
+size = Vector2(154, 161)
+
+[node name="ClothesPile" type="StaticBody2D" unique_id=1302490009]
+
+[node name="Shadowcircle" type="Sprite2D" parent="." unique_id=1542825027]
+position = Vector2(-1.499999, 29.500006)
+scale = Vector2(7.53125, 4.9062495)
+texture = ExtResource("1_1khs2")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=331616371]
+visible = false
+modulate = Color(0.57, 0.57, 0.57, 0.3254902)
+position = Vector2(2, 42.500004)
+scale = Vector2(43.600002, 22.200003)
+texture = ExtResource("1_14xno")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1163938912]
+modulate = Color(0.6298736, 0.6298736, 0.6298736, 1)
+position = Vector2(-6.9999995, -2.9999998)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_7n3b6")
+
+[node name="Label" type="Label" parent="." unique_id=236575958]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -99.5
+offset_top = -56.0
+offset_right = 99.5
+offset_bottom = -31.0
+grow_horizontal = 2
+text = "E to interact - Drawer"
+label_settings = SubResource("LabelSettings_d3vgd")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Interactable" type="Area2D" parent="." unique_id=1152059022 groups=["Interactable"]]
+collision_layer = 256
+collision_mask = 256
+script = ExtResource("10_p523m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=465970247]
+position = Vector2(5.5, 5.5)
+shape = SubResource("RectangleShape2D_b7gqa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=982391408]
+position = Vector2(3, 8.5)
+shape = SubResource("RectangleShape2D_kvkti")
+disabled = true
+
+[connection signal="area_entered" from="Interactable" to="Interactable" method="_on_area_entered"]
+[connection signal="body_entered" from="Interactable" to="Interactable" method="_on_body_entered"]
+[connection signal="body_exited" from="Interactable" to="Interactable" method="_on_body_exited"]

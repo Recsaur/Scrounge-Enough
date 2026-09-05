@@ -11,6 +11,10 @@ var kick = true
 var InInteract = false
 @onready var sprite = $Sprite2D
 
+
+func _ready() -> void:
+	AudioHandler.BG2()
+
 func _physics_process(delta: float) -> void:
 	GameController.PlayerSpeed
 	var direction := Input.get_vector("left", "right", "up", "down")

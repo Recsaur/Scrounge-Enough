@@ -20,6 +20,7 @@ func _physics_process(delta: float) -> void:
 		alrdy_use = true
 		#sprite.play("open")
 		ShakeStrength += 1
+		AudioHandler.removewashing()
 		get_parent().get_parent().get_node("Player").Interacting(true)
 		await get_tree().create_timer(GameController.WashingTime).timeout
 		get_parent().get_parent().get_node("Player").Interacting(false)

@@ -21,6 +21,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	ShakeStrength = GameController.PawShakes
 	if ShakeStrength > 0.0:
+		AudioHandler.Shaking()
+		print("SAHH")
 		paw1.position = paw1og + Vector2(randf_range(-ShakeStrength,ShakeStrength),randf_range(-ShakeStrength,ShakeStrength))
 		paw2.position = paw2og + Vector2(randf_range(-ShakeStrength,ShakeStrength),randf_range(-ShakeStrength,ShakeStrength))
 

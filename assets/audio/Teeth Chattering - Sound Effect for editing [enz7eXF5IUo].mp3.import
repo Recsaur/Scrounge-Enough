@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bjamjmwwytvce"
+path="res://.godot/imported/Teeth Chattering - Sound Effect for editing [enz7eXF5IUo].mp3-3906e1c58151973a7313ddec9605bbd0.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/Teeth Chattering - Sound Effect for editing [enz7eXF5IUo].mp3"
+dest_files=["res://.godot/imported/Teeth Chattering - Sound Effect for editing [enz7eXF5IUo].mp3-3906e1c58151973a7313ddec9605bbd0.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

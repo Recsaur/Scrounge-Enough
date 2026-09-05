@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://dp208bh70b687"]
+
+[ext_resource type="Script" uid="uid://cs6twxdryueqv" path="res://scenes/audio_handler.gd" id="1_11bbw"]
+[ext_resource type="AudioStream" uid="uid://vuvsakoetwj7" path="res://assets/audio/Sketchbook 2024-10-14.ogg" id="2_0q042"]
+[ext_resource type="AudioStream" uid="uid://d07p4pvhqmgq" path="res://assets/audio/406562__anthousai__hit-metallic-01.wav" id="2_8vieo"]
+[ext_resource type="AudioStream" uid="uid://ci81dyo3jnqb6" path="res://assets/audio/opendoro.wav" id="2_24e85"]
+[ext_resource type="AudioStream" uid="uid://tw5reeia6dp7" path="res://assets/audio/washingmachineremove.wav" id="2_hj78y"]
+[ext_resource type="AudioStream" uid="uid://cqua8dbts1de8" path="res://assets/audio/Sketchbook 2024-10-30.ogg" id="3_3il7u"]
+[ext_resource type="AudioStream" uid="uid://c2hucspl5fv35" path="res://assets/audio/slamdoor.wav" id="3_4bfri"]
+[ext_resource type="AudioStream" uid="uid://m6b773gl4k75" path="res://assets/audio/653370__triqystudio__dullthud.wav" id="3_hj78y"]
+[ext_resource type="AudioStream" uid="uid://csldxykx68754" path="res://assets/audio/thin metal hit 5.wav" id="4_0q042"]
+[ext_resource type="AudioStream" uid="uid://ccxaqim7pmuk5" path="res://assets/audio/616295__wwstudioswastaken__dull_thud_01.wav" id="4_ohrrr"]
+[ext_resource type="AudioStream" uid="uid://be167rew2tel8" path="res://assets/audio/shaking.wav" id="5_24e85"]
+[ext_resource type="AudioStream" uid="uid://h3fnsc5gwdwl" path="res://assets/audio/cardboard boxes hit and tumble 1.wav" id="8_3il7u"]
+
+[node name="AudioHandler" type="Node2D" unique_id=994130437]
+script = ExtResource("1_11bbw")
+
+[node name="Washingmachineremove" type="AudioStreamPlayer" parent="." unique_id=927816820]
+stream = ExtResource("2_hj78y")
+
+[node name="metalhit" type="AudioStreamPlayer" parent="." unique_id=1324193974]
+stream = ExtResource("2_8vieo")
+
+[node name="thud" type="AudioStreamPlayer" parent="." unique_id=1481678849]
+stream = ExtResource("3_hj78y")
+
+[node name="616295WwstudioswastakenDullThud01" type="AudioStreamPlayer" parent="." unique_id=661911437]
+stream = ExtResource("4_ohrrr")
+
+[node name="Bg1" type="AudioStreamPlayer" parent="." unique_id=1208787155]
+stream = ExtResource("2_0q042")
+volume_db = -10.0
+
+[node name="Bg2" type="AudioStreamPlayer" parent="." unique_id=18365985]
+stream = ExtResource("3_3il7u")
+volume_db = -10.0
+
+[node name="Opendoro" type="AudioStreamPlayer" parent="." unique_id=1183654747]
+stream = ExtResource("2_24e85")
+
+[node name="Slamdoor" type="AudioStreamPlayer" parent="." unique_id=392307374]
+stream = ExtResource("3_4bfri")
+
+[node name="ThinMetalHit5" type="AudioStreamPlayer" parent="." unique_id=708702383]
+stream = ExtResource("4_0q042")
+
+[node name="shaking" type="AudioStreamPlayer" parent="." unique_id=239328909]
+stream = ExtResource("5_24e85")
+
+[node name="CardboardBoxesHitAndTumble1" type="AudioStreamPlayer" parent="." unique_id=1842477732]
+stream = ExtResource("8_3il7u")

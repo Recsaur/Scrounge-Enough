@@ -34,8 +34,8 @@ func _on_body_exited(body: Node2D) -> void:
 		player_near = false
 
 
-func shake_random():
-	var tween = create_tween()
+#func shake_random():
+#	var tween = create_tween()
 	#tween.tween_property(sprite,"postion",Vector2(sprite.position.x+randi_range(10,15),sprite.position.y+randi_range(10,15)),0.25)
 	
 #
